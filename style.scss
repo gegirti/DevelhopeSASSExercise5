@@ -1,0 +1,113 @@
+@use "sass:color";
+.main {
+  display: flex;
+  border: red 1px solid;
+  width: 98vw;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.container {
+  color: green;
+  text-decoration: underline blue;
+  text-underline-offset: 10px;
+
+  &-sub {
+    @extend .container;
+    text-decoration: none;
+    border: red solid 1px;
+    padding: 10px;
+  }
+}
+
+.section {
+  display: flex;
+  flex-direction: row;
+  padding: 0 10px;
+}
+article {
+  border: green solid 1px;
+  text-align: center;
+  &.red {
+    color: red;
+  }
+  &.blue {
+    color: blue;
+  }
+}
+.mid-class {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 25px;
+  width: 95vw;
+  justify-content: space-between;
+}
+.fs-1rem,
+.fs-2rem,
+.fs-3rem {
+  border: red solid 1px;
+  background-color: grey;
+  width: 45px;
+  height: 45px;
+  text-align: center;
+}
+.fs-1rem {
+  display: flex;
+  font-size: 1rem;
+}
+.fs-2rem {
+  display: flex;
+  font-size: 1.5rem;
+}
+.fs-3rem {
+  display: flex;
+  font-size: 3rem;
+}
+
+.last {
+  display: flex;
+  width: 95vw;
+  padding: 10px;
+  font-size: 1.5rem;
+  justify-content: center;
+  margin: 10px;
+  color: green;
+  border-color: blue;
+}
+
+$box-colors: (
+  "1": color.adjust(black, $lightness: 95%),
+  "2": color.adjust(black, $lightness: 90%),
+  "3": color.adjust(black, $lightness: 85%),
+  "4": color.adjust(black, $lightness: 80%),
+  "5": color.adjust(black, $lightness: 75%),
+  "6": color.adjust(black, $lightness: 70%),
+  "7": color.adjust(black, $lightness: 65%),
+  "8": color.adjust(black, $lightness: 60%),
+  "9": color.adjust(black, $lightness: 55%),
+  "10": color.adjust(blue),
+  "11": color.adjust(black, $lightness: 45%),
+  "12": color.adjust(black, $lightness: 40%),
+  "13": color.adjust(black, $lightness: 35%),
+  "14": color.adjust(black, $lightness: 30%),
+  "15": color.adjust(black, $lightness: 25%),
+  "16": color.adjust(black, $lightness: 20%),
+  "17": color.adjust(black, $lightness: 15%),
+  "18": color.adjust(black, $lightness: 10%),
+  "19": color.adjust(black, $lightness: 5%),
+);
+@each $key, $value in $box-colors {
+  .mid-class > div:nth-child(#{$key}) {
+    background-color: $value;
+    color: color.invert($value);
+  }
+}
+.mid-class > div:nth-child(10) {
+  color: red;
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+}
